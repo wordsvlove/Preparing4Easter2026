@@ -590,13 +590,10 @@
             const data = devotionals[currentDevotionalKey];
             if (!data) return;
 
-            // 移除金句中的聖經章節來源 (尋找「——」並只取前面的經文內容)
-            const verseToSpeak = data.verse.split('——')[0].trim();
-
             // 準備要朗讀的段落 (包含大標題，不含小標題)
             const sections = [
                 data.title,
-                verseToSpeak,
+                data.verse,
                 data.theology,
                 data.counseling,
                 data.action,
