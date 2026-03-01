@@ -577,12 +577,13 @@
 
         let currentDevotionalKey = null;
         let isAudioPlaying = false;
-        let playbackTimeout = null;
         let currentUtterance = null;
 
         // 語音播放功能
         function toggleAudio() {
-            if (isAudioPlaying || window.speechSynthesis.speaking || playbackTimeout) {
+            const synth = window.speechSynthesis;
+
+            if (isAudioPlaying || synth.speaking) {
                 stopAudio();
                 return;
             }
@@ -590,72 +591,82 @@
             const data = devotionals[currentDevotionalKey];
             if (!data) return;
 
-            // 準備要朗讀的段落 (包含大標題，不含小標題)
-            const sections = [
+            // 移除金句中的聖經章節來源
+            const verseToSpeak = data.verse.split('——')[0].trim();
+
+            // 準備要朗讀的段落。使用多個全形句號創造約 1.5 秒的自然停頓，
+            // 這種做法能避開手機瀏覽器(如 iOS Safari)阻擋多段播放導致「冇聲」的問題。
+            const pauseStr = "。。。。。。";
+            const textToSpeak = [
                 data.title,
-                data.verse,
+                verseToSpeak,
                 data.theology,
                 data.counseling,
                 data.action,
                 data.prayer
-            ];
+            ].join(pauseStr);
 
+            // 確保語音引擎沒有卡在背景
+            synth.resume();
+            synth.cancel();
+
+            currentUtterance = new SpeechSynthesisUtterance(textToSpeak);
+            currentUtterance.lang = 'zh-HK';
+            currentUtterance.rate = 0.82;  // 保持慢速
+            currentUtterance.pitch = 1.0;  // 恢復正常音調，避免女聲被壓低變成男聲
+
+            // 尋找廣東話女聲
+            const voices = synth.getVoices();
+            let targetVoices = voices.filter(v => v.lang.includes('zh-HK') || v.lang.toLowerCase().includes('yue'));
+            
+            // 明確指定常見的「女聲」名稱 (Sin-ji: 蘋果廣東話女聲, HiuMaan: 微軟廣東話女聲)
+            const femaleNames = ['sin-ji', 'hiumaan', 'google', 'ting-ting', 'yating', 'hanhan', 'xiaoxiao', 'female'];
+            
+            let preferredVoice = targetVoices.find(v => {
+                const name = v.name.toLowerCase();
+                return femaleNames.some(f => name.includes(f));
+            });
+
+            // 如果找不到特定女聲，選第一個廣東話聲音
+            if (!preferredVoice && targetVoices.length > 0) {
+                preferredVoice = targetVoices[0];
+            }
+
+            // 容錯機制：如果連廣東話都沒有，找其他的中文女聲，避免完全冇聲
+            if (!preferredVoice) {
+                let zhVoices = voices.filter(v => v.lang.includes('zh'));
+                preferredVoice = zhVoices.find(v => {
+                    const name = v.name.toLowerCase();
+                    return femaleNames.some(f => name.includes(f));
+                }) || zhVoices[0];
+            }
+
+            // 設定最終選定的聲音
+            if (preferredVoice) {
+                currentUtterance.voice = preferredVoice;
+                currentUtterance.lang = preferredVoice.lang;
+            }
+
+            currentUtterance.onend = () => { stopAudio(); };
+            currentUtterance.onerror = (e) => { 
+                console.log("語音播放發生錯誤:", e);
+                stopAudio(); 
+            };
+
+            // 播放背景音樂 (As the Deer 風格的純音樂)
             const bgm = document.getElementById('bgm');
             if (bgm) {
-                bgm.volume = 0.10; // 音量微調，適合輕柔的背景音樂
+                bgm.volume = 0.10;
                 bgm.play().catch(e => console.log("音訊自動播放被阻擋：", e));
             }
             
-            setAudioUIPlaying();
-            playSection(0, sections);
-        }
-
-        // 分段播放功能，製造 1.5 秒停頓
-        function playSection(index, sections) {
-            const synth = window.speechSynthesis;
-            
-            if (index >= sections.length || !isAudioPlaying) {
-                stopAudio();
-                return;
-            }
-
-            currentUtterance = new SpeechSynthesisUtterance(sections[index]);
-            currentUtterance.lang = 'zh-HK';  // 改為香港粵語 (廣東話)
-            currentUtterance.rate = 0.82;  // 慢速，營造安靜氛圍
-            currentUtterance.pitch = 0.90; // 音調微降，增加情感厚度
-
-            // 換一把聲音：尋找廣東話 (zh-HK 或 yue) 的語音引擎
-            const voices = synth.getVoices();
-            const hkVoices = voices.filter(v => v.lang.includes('zh-HK') || v.lang.toLowerCase().includes('yue'));
-            
-            if (hkVoices.length > 0) {
-                // 優先挑選高質感的廣東話聲音 (如 Google 粵語、Apple Sin-ji 等)
-                const preferredVoice = hkVoices.find(v => v.name.includes('Google') || v.name.includes('Sin-ji') || v.name.includes('HiuMaan') || v.name.includes('WanLung')) || hkVoices[0];
-                currentUtterance.voice = preferredVoice;
-            }
-
-            currentUtterance.onend = () => {
-                if (!isAudioPlaying) return;
-                // 每段讀完後，給予 1.5 秒 (1500毫秒) 的情感停頓
-                playbackTimeout = setTimeout(() => {
-                    playSection(index + 1, sections);
-                }, 1500);
-            };
-
-            currentUtterance.onerror = () => {
-                stopAudio();
-            };
-
             synth.speak(currentUtterance);
+            setAudioUIPlaying();
         }
 
         // 停止所有語音與音樂
         function stopAudio() {
             isAudioPlaying = false;
-            if (playbackTimeout) {
-                clearTimeout(playbackTimeout);
-                playbackTimeout = null;
-            }
             if (window.speechSynthesis && window.speechSynthesis.speaking) {
                 window.speechSynthesis.cancel();
             }
