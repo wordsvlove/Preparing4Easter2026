@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-HK">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
     <style>
         body {
             font-family: 'Noto Sans TC', sans-serif;
-            background-color: #FDFBF7;
+            background-color: #FDFBF7; /* 溫暖的米白色背景 */
             color: #333333;
         }
         h1, h2, h3, .serif-text {
@@ -40,14 +40,12 @@
 <body class="min-h-screen flex flex-col items-center py-10 px-4 sm:px-6 lg:px-8">
 
     <div class="max-w-3xl w-full">
-        <!-- Header -->
         <header class="text-center mb-10">
             <h1 class="text-3xl sm:text-4xl font-bold text-[#5C4033] mb-3">在日常中與主同行</h1>
             <p class="text-lg text-[#8B5A2B] serif-text italic">活出生命之道 —— 復活節靈修旅程</p>
-            <p class="text-sm text-gray-500 mt-2">2月28日(預備) 至 4月5日(復活節)</p>
+            <p class="text-sm text-gray-500 mt-2">2月28日(預備) 至 4月30日</p>
         </header>
 
-        <!-- Navigation Tabs -->
         <nav class="flex justify-center border-b border-gray-200 mb-8">
             <button id="tab-today" class="px-6 py-3 text-lg transition-colors duration-200 tab-active focus:outline-none" onclick="switchTab('today')">
                 今日靈修
@@ -57,17 +55,13 @@
             </button>
         </nav>
 
-        <!-- Content Area -->
         <main>
-            <!-- 隱藏的背景音樂播放器 -->
             <audio id="bgm" loop>
                 <source src="https://assets.mixkit.co/music/preview/mixkit-beautiful-dream-493.mp3" type="audio/mpeg">
             </audio>
 
-            <!-- Today's Devotional -->
             <div id="content-today" class="space-y-6">
                 <div class="glass-card rounded-2xl p-6 sm:p-10 relative overflow-hidden">
-                    <!-- Date Badge -->
                     <div class="absolute top-0 right-0 bg-[#8B5A2B] text-white px-4 py-1 rounded-bl-lg text-sm font-medium tracking-wider" id="display-date">
                         載入中...
                     </div>
@@ -76,8 +70,7 @@
                         載入中...
                     </h2>
 
-                    <!-- 聆聽按鈕 -->
-                    <div class="flex justify-center mb-6">
+                    <div class="flex justify-center mb-8">
                         <button id="play-audio-btn" onclick="toggleAudio()" class="flex items-center px-5 py-2.5 bg-[#F8F5F0] border border-[#EBE3D5] text-[#8B5A2B] rounded-full hover:bg-[#E6D5C3] transition-colors focus:outline-none shadow-sm">
                             <svg id="play-icon" class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
                             <svg id="pause-icon" class="w-5 h-5 mr-2 hidden" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
@@ -90,7 +83,7 @@
                             <div class="flex items-center mb-3">
                                 <span class="bg-[#E6D5C3] text-[#5C4033] px-2 py-1 rounded text-xs font-bold mr-2">主題金句</span>
                             </div>
-                            <blockquote class="border-l-4 border-[#8B5A2B] pl-4 italic text-gray-700 serif-text text-lg leading-relaxed" id="dev-verse">
+                            <blockquote class="border-l-4 border-[#8B5A2B] pl-4 italic text-gray-700 serif-text text-lg leading-relaxed whitespace-pre-line" id="dev-verse">
                             </blockquote>
                         </section>
 
@@ -112,12 +105,12 @@
 
                         <section>
                             <div class="flex items-center mb-3">
-                                <span class="bg-[#E6D5C3] text-[#5C4033] px-2 py-1 rounded text-xs font-bold mr-2">生活實踐</span>
+                                <span class="bg-[#E6D5C3] text-[#5C4033] px-2 py-1 rounded text-xs font-bold mr-2">深度默想與實踐</span>
                                 <span class="text-xs text-gray-500 font-medium">Practical Action</span>
                             </div>
                             <div class="flex items-start bg-white p-4 rounded-lg shadow-sm border border-gray-100">
                                 <svg class="w-6 h-6 text-[#8B5A2B] mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <p class="text-gray-700 leading-relaxed font-medium" id="dev-action"></p>
+                                <p class="text-gray-700 leading-relaxed font-medium whitespace-pre-line" id="dev-action"></p>
                             </div>
                         </section>
 
@@ -131,36 +124,35 @@
                             </div>
                         </section>
                     </div>
-                    
-                    <div id="preview-notice" class="mt-6 text-center text-sm text-[#8B5A2B] hidden">
-                        * 目前非活動期間，系統為您展示預設的靈修內容。
-                    </div>
                 </div>
             </div>
 
-            <!-- Outline Data -->
             <div id="content-outline" class="hidden-content">
                 <div class="glass-card rounded-2xl p-6 sm:p-10">
                     <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center serif-text">主題大綱</h2>
                     <p class="text-gray-600 text-sm mb-8 text-center">全部內容已開放，隨時點擊閱讀與反思</p>
                     
                     <div class="space-y-6" id="outline-container">
-                        <!-- Outline generated by JS -->
-                    </div>
+                        </div>
                 </div>
             </div>
         </main>
+        
+        <footer class="mt-12 text-center text-sm text-gray-400 pb-8">
+            <p>© 2026 預苦期至復活期靈修計畫</p>
+        </footer>
     </div>
 
     <script>
         const devotionals = {
+            // ================= 預苦期至復活節 (2/28 - 4/5) =================
             "2026-02-28": {
                 dateStr: "2月28日 (六)",
-                title: "預備篇：心靈的除草與倒空 (預苦期簡介)",
+                title: "預備篇：心靈的除草與倒空",
                 verse: "「你們要撕裂心腸，不撕裂衣服。歸向耶和華—你們的神；因為他有恩典，有憐憫，不輕易發怒，有豐盛的慈愛。」—— 約珥書 2:13",
-                theology: "在教會傳統中，「預苦期」（又稱大齋期，Lent）是復活節前的一段預備期，為期約40天（不計主日）。這不是為了用受苦來換取神的愛，而是刻意「倒空」自己，清理生命中的雜草。神看重的不是我們外表的宗教行為（撕裂衣服），而是我們內心真實的悔改與轉向（撕裂心腸）。這是一個重新對焦的季節，讓我們承認自己的軟弱，並預備空間來迎接基督的救贖。",
-                counseling: "現代生活充滿了「添加」——買更多的東西、塞滿更多的行程、吸收更多的資訊。我們的心靈就像一個過度擁擠的衣櫥，連神也擠不進來。預苦期是一場心靈的「斷捨離」。在刻意的禁食或戒除某種習慣（如戒網路、戒抱怨）中，我們能察覺自己深層的依賴與焦慮。當我們拿走那些用來麻痺自己的安慰劑時，我們才會看見自己真實的飢渴，進而將這份渴望轉向神。",
-                action: "為接下來的36天設定一個具體的「刻意放手」行動。可以是每天減少30分鐘滑手機的時間，或是戒除每天一杯的含糖飲料，將省下的時間或金錢用來安靜祈禱或幫助他人。",
+                theology: "在教會傳統中，「預苦期」（又稱大齋期，Lent）是復活節前的一段預備期，為期約40天。這不是為了用受苦來換取神的愛，而是刻意「倒空」自己，清理生命中的雜草。神看重的不是我們外表的宗教行為（撕裂衣服），而是我們內心真實的悔改與轉向（撕裂心腸）。這是一個重新對焦的季節，讓我們承認自己的軟弱，並預備空間來迎接基督的救贖。",
+                counseling: "現代生活充滿了「添加」——買更多的東西、塞滿更多的行程、吸收更多的資訊。我們的心靈就像一個過度擁擠的衣櫥，連神也擠不進來。預苦期是一場心靈的「斷捨離」。在刻意的禁食或戒除某種習慣中，我們能察覺自己深層的依賴與焦慮。當我們拿走那些用來麻痺自己的安慰劑時，我們才會看見自己真實的飢渴，進而將這份渴望轉向神。",
+                action: "為接下來的旅程設定一個具體的「刻意放手」行動。例如：每天減少30分鐘滑手機的時間，或是戒除每天一杯的含糖飲料，將省下來的心力用來安靜祈禱。",
                 prayer: "主啊，我的心太滿了，滿到聽不見祢的聲音。在這預苦期的起點，求祢賜我勇氣，誠實面對我用來填補空虛的替代品。幫助我倒空自己，好讓祢的恩典有空間進入我的生命。奉主耶穌的名禱告，阿們。"
             },
             "2026-03-01": {
@@ -486,6 +478,232 @@
                 counseling: "什麼是你生命中那塊「沉重、推不開的大石頭」？是長期的病痛、破裂的關係、還是根深蒂固的癮癖？復活的大能不僅是未來上天堂的保證，更是今天能介入你生命、帶來生命翻轉與更新的力量。基督既已戰勝了最大的敵人——死亡，就沒有什麼能攔阻祂將生命賜給你。",
                 action: "今天向身邊的人大聲宣告一句：「主耶穌復活了！」並回想一件神曾經在你生命中「輥開石頭」（解決不可能的難題）的經歷，獻上讚美。",
                 prayer: "得勝的救主耶穌，我讚美祢！祢勝過了死亡的毒鉤，從墳墓裡復活了。求復活的大能今天充滿我的生命，將我從一切的恐懼、絕望與死寂中拯救出來，活出充滿榮耀盼望的新生命！奉主耶穌得勝的名禱告，阿們！"
+            },
+            // ================= 復活期 (4/6 - 4/30) =================
+            "2026-04-06": {
+                dateStr: "4月6日 (一)",
+                title: "空墳墓的察覺：從絕望到相信",
+                verse: "「先到墳墓的那門徒也進去，看見就信了。因為他們還不明白聖經的意思，就是耶穌必要從死裡復活。」—— 約翰福音 20:1-9",
+                theology: "復活節的清晨，門徒們帶著極大的絕望奔向墳墓。約翰看見細麻布和裹頭巾整齊地放著，這不是盜墓者的傑作，而是復活的記號。就在那一刻，儘管還未見到耶穌，他「看見就信了」。\n\n在我們的生活中，是否也常帶著預期失敗的心情面對處境？神能在看似絕望的「空墳墓」中留下復活的線索。今天，主邀請我們安靜下來，留意生活中那些看似微小、卻是祂正在動工的記號。",
+                counseling: "當現實與我們的期望背道而馳時，絕望感常會蒙蔽我們的雙眼，讓我們只看見「失去的」，卻看不見「正在發生的」。我們需要刻意練習「屬靈的覺察力」，在不完美的處境中，去尋找神恩典的蛛絲馬跡。",
+                action: "1. 你的生命中，有哪個領域像「空墳墓」一樣讓你感到失去盼望？\n2. 試著求神開啟眼睛，尋找在那個處境中神所留下的「細麻布」（微小的恩典記號）。",
+                prayer: "親愛的主，當我被失望蒙蔽時，求祢賜我約翰的眼光。幫助我敏銳於祢動工的記號，讓我即使在還未完全明白時，就能看見並相信祢的得勝。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-07": {
+                dateStr: "4月7日 (二)",
+                title: "停在原地的悲傷：面對失去",
+                verse: "「門徒就回自己的住處去了。馬利亞卻站在墳墓外面哭... 天使對她說：『婦人，你為什麼哭？』她說：『因為有人把我主挪了去，我不知道放在哪裡。』」—— 約翰福音 20:10-13",
+                theology: "其他門徒看見空墳墓後就回家了，但馬利亞卻留在原地哭泣。她失去了最敬愛的主，現在連祂的身體都不見了。這份極度的悲痛，讓她甚至沒有察覺到和她說話的是天使。\n\n神容許我們有悲傷的時刻。在信仰的旅程中，我們不需要總是表現得剛強。當我們失去所愛、失去機會或失去健康時，神看見我們在「墳墓外」的眼淚，祂接納我們真實的軟弱。",
+                counseling: "在面對失落時，我們常常急於「走出來」或被身邊的人催促著「堅強起來」。但未經處理的悲傷會成為內心的毒素。允許自己停留在悲傷中，是健康哀悼過程的第一步。",
+                action: "1. 最近有什麼失去或挫折，讓你像馬利亞一樣「停在原地哭泣」？\n2. 神並不催促我們立刻擦乾眼淚。將你最真實的悲傷帶到神面前，告訴祂你的感受。",
+                prayer: "主耶穌，謝謝祢明白我失去時的痛楚。當我陷入悲傷、無法前進時，求祢陪伴我，讓我確信祢的愛從未離開過我。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-08": {
+                dateStr: "4月8日 (三)",
+                title: "呼喚你的名：專屬的相遇",
+                verse: "「耶穌說：『馬利亞。』馬利亞就轉過來，用希伯來話對他說：『拉波尼！』」—— 約翰福音 20:14-18",
+                theology: "馬利亞以為耶穌是看園的，直到耶穌輕輕呼喚她的名字。那一聲呼喚，沒有責備她的遲鈍，只有深深的熟悉與接納。耶穌的復活不是一個冷冰冰的宗教宣告，而是一場極其個人化、充滿溫度的相遇。\n\n我們常在軟弱中四處尋找答案，卻忽略主就站在身旁。祂知道我們的名字和為何哭泣。當我們願意轉身，在靈裡聽見祂的呼喚時，眼淚就會化為喜樂的見證。",
+                counseling: "當我們深陷痛苦時，常會覺得自己是孤立無援、不被理解的。聽見有人準確且充滿愛意地呼喚自己的名字，是建立安全感最直接的方式。神正是用這樣親密的方式來觸摸我們的心。",
+                action: "1. 在嘈雜的生活中，你有多久沒有安靜下來聽神「呼喚你的名字」了？\n2. 如果現在耶穌溫柔地呼喚你，你覺得祂會對你說什麼？你會如何回應？",
+                prayer: "主啊，謝謝祢認識我，並按著我的名字呼喚我。求祢開啟我屬靈的耳朵，讓我在風暴中能認出祢的聲音，轉向祢。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-09": {
+                dateStr: "4月9日 (四)",
+                title: "願你們平安：突破恐懼的同在",
+                verse: "「那日晚上，門徒所在的地方，因怕猶太人，門都關了。耶穌來，站在當中，對他們說：『願你們平安！』」—— 約翰福音 20:19-21",
+                theology: "因為懼怕，門徒們把自己緊緊鎖在屋子裡。恐懼讓他們築起了高牆，阻斷了與外界的聯繫。然而，再堅固的門鎖，也無法阻擋復活的基督。耶穌直接顯現在他們當中，賜下平安。\n\n今天，我們的心中是否也鎖著幾道門？可能是對未來的恐懼，或是對人際關係的防備。耶穌要穿透我們自我保護的高牆，將那份超越環境的真實平安，吹進我們疲憊的生命中。",
+                counseling: "恐懼會讓我們產生「防衛機制」，讓我們關閉心門，與他人甚至與神隔離。雖然這能帶來短暫的安全感，但也讓我們困在孤獨中。真正的平安不是沒有危險，而是有神同在的確據。",
+                action: "1. 你目前的生活中，有哪些「門」是因為懼怕而緊緊關閉的？\n2. 想像復活的耶穌走進你緊閉的房間，對你宣告「願你平安」，這帶給你什麼安慰？",
+                prayer: "主耶穌，我承認我的內心常充滿防備與恐懼。求祢走進我生命中那些封閉的角落，賜下祢的平安，驅散我一切的懼怕。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-10": {
+                dateStr: "4月10日 (五)",
+                title: "領受聖靈：賦予和好的使命",
+                verse: "「說了這話，就向他們吹一口氣，說：『你們受聖靈！你們赦免誰的罪，誰的罪就赦免了；你們留下誰的罪，誰的罪就留下了。』」—— 約翰福音 20:22-23",
+                theology: "耶穌不僅帶來平安，更為門徒帶來了能力與使命。祂向門徒吹氣，正如創世記中神將生氣吹入亞當鼻孔裡一樣，這代表著一個全新創造的開始。聖靈的內住，使門徒成為新造的人。\n\n同時，耶穌將「赦罪」的權柄託付給教會。這不是說人能代替神赦罪，而是我們受託去宣告福音，將神赦罪的恩典帶給世界。我們蒙醫治，是為了成為使人和好的使者。",
+                counseling: "領受聖靈意味著我們不再靠著自己的血氣與努力去愛人。赦免是一件極其困難的事，唯有倚靠聖靈所賜的超然能力，我們才能放下心中的苦毒，成為和平的使者。",
+                action: "1. 你是否意識到自己身上帶著神所吹入的「聖靈氣息」，擁有新造的生命？\n2. 今天你可以向誰展現「赦免與接納」，活出使人和好的使命？",
+                prayer: "主啊，求祢再次向我吹氣，讓我被聖靈充滿。幫助我帶著祢的赦免與愛，走進人群，成為傳遞和平的器皿。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-11": {
+                dateStr: "4月11日 (六)",
+                title: "摸主的釘痕：接納真實的疑惑",
+                verse: "「就對多馬說：『伸過你的指頭來，摸我的手；伸出你的手來，探入我的肋旁。不要疑惑，總要信！』」—— 約翰福音 20:24-29",
+                theology: "多馬的懷疑代表了許多人的心聲：除非親自經歷，否則絕不相信。耶穌沒有因為多馬的遲疑而放棄他，反而專程為他顯現，敞開自己的傷痕讓他觸摸。耶穌接納我們帶著真實的軟弱來到祂面前。\n\n神不怕我們的懷疑，祂的愛經得起考驗。當我們勇敢直面心中的疑惑，並在主面前尋求時，那份經歷過掙扎的信心，往往會變得無比堅定，發出「我的主！我的神！」的讚嘆。",
+                counseling: "在信仰群體中，我們有時會害怕表達自己的懷疑，深怕被貼上「不屬靈」的標籤。但壓抑疑惑只會導致信仰的表淺化。容許自己有疑問，並帶著這些疑問尋求神，是信仰深化的必經之路。",
+                action: "1. 在信仰或生活中，你有什麼一直跨不過去的「懷疑」？\n2. 耶穌願意敞開傷痕接納多馬，這如何鼓勵你誠實地將疑惑帶到神面前？",
+                prayer: "親愛的主，謝謝祢接納我的理智與軟弱。求祢幫助我，即使在看不見的時候也能相信，讓我的信心在祢的愛中被堅固。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-12": {
+                dateStr: "4月12日 (日)",
+                title: "為了叫你們信：寫在生活中的神蹟",
+                verse: "「耶穌在門徒面前另外行了許多神蹟，沒有記在這書上。但記這些事要叫你們信耶穌是基督，是神的兒子，並且叫你們信了他，就可以因他的名得生命。」—— 約翰福音 20:30-31",
+                theology: "約翰坦承，他記錄下來的只是耶穌所行神蹟的冰山一角。記載這些事的目的只有一個：引導我們產生真實的信心，並因這信心獲得豐盛的生命。\n\n聖經的紀錄是有限的，但耶穌在我們生命中動工的篇幅卻是無限的。我們今天的生活，就是約翰福音「未完待續」的篇章。每一天，神都在我們的生活中寫下祂信實的神蹟，等候我們去發掘與相信。",
+                counseling: "感恩與回顧是極佳的心靈保養。當我們刻意去回想神過去如何帶領我們走過死蔭幽谷，我們對未來的焦慮就會減少。將焦點從「我還缺乏什麼」轉移到「神已經成就了什麼」。",
+                action: "1. 回顧過去一年，神在你的生活中「寫下」了哪些沒有被記錄下來的個人神蹟或恩典？\n2. 這些經歷如何幫助你更深地相信祂是神的兒子？",
+                prayer: "主啊，謝謝祢留下寶貴的話語，也謝謝祢持續在我的生活中作工。願我一生的故事，也能成為證明祢是又真又活之神的見證。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-13": {
+                dateStr: "4月13日 (一)",
+                title: "再次撒網：在徒勞中經歷供應",
+                verse: "「耶穌說：『你們把網撒在船的右邊，就必得著。』他們便撒下網去，竟拉不上來，因為魚甚多。」—— 約翰福音 21:1-6",
+                theology: "帶著迷茫，彼得重操舊業去打漁，卻整夜勞力、一無所獲。這正是我們靠自己努力卻徒勞無功的寫照。然而，就在他們最疲憊、最挫敗的清晨，耶穌站在岸上指引他們。\n\n復活的主不僅關心我們的屬靈生命，也顧念我們生活中的「打漁」與生計。當我們願意放下自己的經驗，順服那看似不合常理的指引「撒在右邊」時，就能經歷祂出人意外的豐盛供應。",
+                counseling: "當我們在某件事上「整夜勞力卻一無所獲」時，很容易產生嚴重的自我懷疑與耗竭感。這時候，我們需要的不是更加用力地盲目嘗試，而是停下來，聆聽神有沒有給我們不同的方向。",
+                action: "1. 最近在工作或服事中，你是否感到「整夜勞力卻一無所獲」的疲憊？\n2. 如果主今天指引你換一個方式或態度（把網撒在右邊），你願意順服嗎？",
+                prayer: "主啊，我常靠自己的聰明努力，卻換來疲憊。求祢在我的日常生活中向我說話，賜我順服的心，經歷祢的供應。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-14": {
+                dateStr: "4月14日 (二)",
+                title: "岸上的早餐：溫暖的相交與安息",
+                verse: "「他們上了岸，就看見那裡有炭火，上面有魚，又有餅... 耶穌就來拿餅和魚給他們。」—— 約翰福音 21:7-14",
+                theology: "當門徒拖著滿網的魚上岸時，發現耶穌已經為他們生了炭火，烤了魚和餅。復活的榮耀君王，此刻彎下腰，像僕人一樣為這些曾經離棄祂、感到羞愧的朋友預備早餐。\n\n這是一個極其動人的團契畫面。在勞碌之後，主最看重的不是我們打了多少魚、交出多少成績，而是我們是否願意回到岸上，與祂同坐、享受祂預備的愛與安息。",
+                counseling: "我們常以為要拿著「滿網的魚」（傲人的成績）才配來到神面前。但神在乎的是我們的「人」，而非我們的「業績」。容許自己在神面前單純地享受被照顧的感覺，是醫治勞碌心靈的良藥。",
+                action: "1. 在忙碌的生活中，你有多久沒有安靜下來，享受主為你預備的「屬靈早餐」了？\n2. 這個畫面如何改變你對「在神面前的價值」的看法？",
+                prayer: "親愛的主，謝謝祢不僅是高高在上的神，更是為我預備炭火與餅的良友。求祢教導我在忙碌中懂得回到祢身邊，享受與祢同在的安息。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-15": {
+                dateStr: "4月15日 (三)",
+                title: "你愛我嗎：處理深層的內疚",
+                verse: "「他們吃完了早飯，耶穌對西門彼得說：『約翰的兒子西門，你愛我比這些更深嗎？』... 耶穌對他說：『你餵養我的小羊。』」—— 約翰福音 21:15-16",
+                theology: "彼得曾在炭火旁三次不認主，這成為他心中極深的痛楚。耶穌同樣在炭火旁，沒有重提他的失敗，而是溫柔地用「你愛我嗎？」來引導彼得面對自己的心。\n\n神對我們失敗的處理方式，從來不是定罪，而是用愛來挽回。主的問題不是為了拷問，而是為了醫治。當我們承認自己有限的愛，主就用祂無限的恩典來填補，並重新賦予我們服事的價值。",
+                counseling: "內疚感會像毒蛇一樣啃噬我們的心靈，讓我們覺得自己不配再服事、不配被愛。耶穌的對話示範了最完美的醫治：直視創傷的核心，不是為了定罪，而是為了在愛中重新建立關係。",
+                action: "1. 你生命中是否也有過對神或對人的虧欠，至今仍感到內疚？\n2. 當耶穌溫柔地問你「你愛我嗎」時，你願意將那份虧欠交給祂來醫治嗎？",
+                prayer: "主耶穌，謝謝祢用無比溫柔的愛挽回軟弱的我。我承認我的愛常常不夠，但求祢悅納我的真心，並徹底醫治我心中的內疚。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-16": {
+                dateStr: "4月16日 (四)",
+                title: "第三次的呼召：完全的恢復與委身",
+                verse: "「第三次對他說：『約翰的兒子西門，你愛我嗎？』... 彼得憂愁說：『主啊，你是無所不知的；你知道我愛你。』耶穌說：『你餵養我的羊。』」—— 約翰福音 21:17-19",
+                theology: "第三次的問話，直擊了彼得內心最脆弱的地方，徹底拔除了他三次否認主的毒鉤。彼得終於放下驕傲，承認主的無所不知。每一次的回應，耶穌都堅定地說：「餵養我的羊」。\n\n主不僅醫治我們，更信任我們。祂將最寶貴的群羊交託給一個曾經跌倒過、但被愛完全恢復的人。經歷過破碎與赦免的生命，才能生出最真實、最溫柔的牧養能力。",
+                counseling: "真正的謙卑，是在經歷失敗後，不再倚靠自己的剛強，而是單單仰望神的恩典。一個被神深深赦免與醫治過的人，往往能對他人的軟弱展現出最大的同理與包容。",
+                action: "1. 你的「軟弱與失敗」，如何成為神裝備你去理解、安慰他人的養分？\n2. 耶穌今天也呼召你「餵養我的羊」，你身邊有誰是需要你去關懷與服事的？",
+                prayer: "主啊，祢知道我的一切，祢知道我愛祢。我願意回應祢的呼召，用祢愛我的愛，去關心、牧養身邊有需要的人。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-17": {
+                dateStr: "4月17日 (五)",
+                title: "與你何干：放下比較，專心跟隨",
+                verse: "「彼得看見那門徒，就問耶穌說：『主啊，這人將來如何？』耶穌對他說：『我若要他等到我來的時候，與你何干？你跟從我吧！』」—— 約翰福音 21:20-25",
+                theology: "彼得剛經歷了深刻的恢復，轉頭卻忍不住去比較另一個門徒的命運。這是我們的通病：總喜歡看別人擁有了什麼恩賜、神給了他什麼劇本。耶穌的回答很直接：「與你何干？你跟從我吧！」\n\n在教會或生活中，比較是破壞合一與平安的毒藥。神對每個人都有獨特且美好的計畫，我們不需要與別人賽跑。專注於神為我們量身打造的路，才是最自由的跟隨。",
+                counseling: "比較心理源自於我們內心的不安全感，總需要透過別人的狀況來定位自己的價值。當我們將眼光從「別人擁有什麼」收回到「神呼召我做什麼」時，內心就會獲得極大的釋放與平靜。",
+                action: "1. 在服事、職場或生活中，你是否常陷入「與他人比較」的焦慮中？\n2. 「你跟從我吧」這句話，提醒你今天應該將注意力轉回哪件神託付給你的事情上？",
+                prayer: "主啊，求祢赦免我常常東張西望、與人比較的心。幫助我定睛在祢身上，安心走好祢為我預備的道路，專心跟從祢。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-18": {
+                dateStr: "4月18日 (六)",
+                title: "信仰的絕對基石：福音的確據",
+                verse: "「我當日所領受又傳給你們的：第一，就是基督照聖經所說，為我們的罪死了，而且埋葬了；又照聖經所說，第三天復活了。」—— 哥林多前書 15:1-4",
+                theology: "從約翰福音的柔聲醫治，我們轉向保羅堅實的真理論述。保羅將福音的核心濃縮為這幾句話：基督受死、埋葬、復活。這不是一套哲學理論或道德勸說，而是根植於不容妥協的歷史事實。\n\n當世界試圖將基督教簡化為一種心理寄託時，我們必須回到這個根基。因為基督確實從死裡復活了，我們的信仰才有重量，我們今天所過的每一天也才具有永恆的意義。",
+                counseling: "在面對生命的風暴時，感性的安慰有時會顯得蒼白無力。我們需要有堅實的真理作為錨點。客觀的歷史事實（基督復活），能為我們主觀的情緒波動提供最穩固的支撐點。",
+                action: "1. 如果有人問你「你信的福音是什麼」，你會如何用最簡單的話向他解釋？\n2. 基督已經復活的「歷史事實」，如何帶給你今天生活的安全感？",
+                prayer: "主耶穌，謝謝祢為我死，又為我復活。求祢將這福音的核心深深烙印在我的心底，成為我信仰堅定不移的基石。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-19": {
+                dateStr: "4月19日 (日)",
+                title: "恩典的大能：從逼迫者到見證人",
+                verse: "「末了也顯給我看；我如同未到產期而生的人一般... 然而，我今日成了何等人，是蒙神的恩才成的，並且他所賜我的恩不是徒然的。」—— 哥林多前書 15:5-11",
+                theology: "復活的耶穌顯現給許多人看，最後也顯現給了曾經逼迫教會的保羅。保羅深深知道自己過去的不配，但他更知道，是復活主的恩典改變了他，讓他「成了何等人」。\n\n復活的大能不僅是歷史事件，更是生命翻轉的動力。我們每個人過去都有不堪的軟弱，但神的恩典在我們身上不會是徒然的。這份恩典推動我們去服事、去愛、去見證祂的榮耀。",
+                counseling: "有時候我們會被過去的失敗感所困，覺得自己「沒資格」為神做什麼。保羅的見證提醒我們：恩典的記號不在於我們的完美，而在於那翻轉我們生命的能力。接納自己蒙恩罪人的身分，是服事的動力來源。",
+                action: "1. 回顧你的生命，你是否也能說「我今日成了何等人，是蒙神的恩才成的」？\n2. 神的恩典如何推動你今天去做出一個具體改變（例如：饒恕某人或主動幫忙）？",
+                prayer: "主啊，感謝祢那不可思議的恩典，拯救了不配的我。願祢的恩典在我身上顯出浩大，激勵我為主而活，不讓這恩典徒然。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-20": {
+                dateStr: "4月20日 (一)",
+                title: "直視信仰的底線：若沒有復活",
+                verse: "「若沒有死人復活的事，基督也就沒有復活了。若基督沒有復活，我們所傳的便是枉然，你們所信的也是枉然...」—— 哥林多前書 15:12-19",
+                theology: "保羅用極其強烈的語氣反證：如果沒有復活，我們所有的敬拜、禱告、奉獻和受苦，全都是一場笑話。基督教信仰沒有中間地帶，它要麼是宇宙中最偉大的真理，要麼是最大的謊言。\n\n直視這條底線，能幫助我們釐清信仰的動機。我們跟隨耶穌，不是為了換取今生的順遂與成功，而是因為祂已經戰勝了死亡，為我們打開了通往永生的大門。這使我們能超越眼前的得失。",
+                counseling: "當我們遇到困難，覺得「信耶穌怎麼沒有比較順利」時，正是我們檢視自己信仰動機的時刻。如果我們的眼光只停留在今生的好處，我們的心靈就容易因為環境的打擊而崩塌。復活的盼望，是我們超越現狀的解答。",
+                action: "1. 你曾否覺得信仰只是為了在「今生」求個平安？這段經文如何挑戰你的價值觀？\n2. 確認復活的真實性，如何改變你面對現今生活挫折的態度？",
+                prayer: "主啊，感謝祢！因為祢的復活，我的信仰不是枉然，我的勞苦不是枉然。求祢擴張我的眼界，不單看今生，更定睛於永恆。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-21": {
+                dateStr: "4月21日 (二)",
+                title: "初熟的果子：基督作王的盼望",
+                verse: "「但基督已經從死裡復活，成為睡了之人初熟的果子... 在亞當裡眾人都死了；照樣，在基督裡眾人也都要復活。」—— 哥林多前書 15:20-23",
+                theology: "在舊約中，獻上「初熟的果子」代表整個收成即將到來。耶穌的復活就是那顆初熟的果子，向全宇宙宣告：死亡的冬天已經過去，生命大豐收的季節已經展開！\n\n因為亞當，死亡進入了世界；但因為基督，生命被奪回了。我們這些在基督裡的人，命運已經與祂緊緊相連。祂的得勝就是我們的得勝，祂的復活保證了我們未來的復活。",
+                counseling: "「初熟的果子」帶給我們一個極美的盼望：現在的苦難與死亡，都只不過是邁向最終豐收的短暫過程。有了這個終局的保證，我們在面對生活中的小死（挫折、疾病、分離）時，就能生出堅韌的力量。",
+                action: "1. 「初熟的果子」這個畫面，如何幫助你面對生命中令人沮喪的「冬天」？\n2. 知道自己「在基督裡」必然復活，帶給你今天什麼樣的安全感？",
+                prayer: "榮耀的君王，祢是初熟的果子，是萬有的主宰。我歡喜快樂地宣告，我在祢裡面有真實的盼望，死亡的權勢已不能轄制我。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-22": {
+                dateStr: "4月22日 (三)",
+                title: "終極的得勝：萬物服在足下",
+                verse: "「再後，末期到了，那時基督既將一切執政的、掌權的、有能的都毀滅了，就把國交與父神。因為基督必要作王...」—— 哥林多前書 15:24-28",
+                theology: "這是歷史的最終劇本。儘管我們現在看世界，仍有戰爭、疾病與不公義，似乎邪惡仍在掌權。但保羅提醒我們結局已經註定：基督必要作王，並要毀滅一切仇敵，包括死亡本身。\n\n當我們把眼光放遠，看見這個終極的得勝時，我們在現實生活中的焦慮就會大幅減輕。我們不是在打一場勝負未卜的仗，而是在跟隨一位已經得勝的君王，走向必然的榮耀。",
+                counseling: "面對世界局勢的動盪或個人環境的失控，我們常感到極度的無力與恐慌。信仰告訴我們，我們不需要獨自承擔這一切的重量。相信「基督最終必要作王」，是釋放心靈重擔的關鍵鑰匙。",
+                action: "1. 「基督必要作王」這個宣告，如何幫助你面對目前無法掌控的環境或社會局勢？\n2. 今天你可以將哪一件令你擔憂的事情，交在「把一切仇敵放在腳下」的主手中？",
+                prayer: "全能的主，我讚美祢！祢是掌管歷史與未來的主宰。當環境動盪時，求祢幫助我堅定相信祢已經作王，並將我的憂慮完全交託給祢。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-23": {
+                dateStr: "4月23日 (四)",
+                title: "天天冒死：因復活而有的勇敢",
+                verse: "「弟兄們，我在我主基督耶穌裡，指著你們所誇的口極力地說，我是天天冒死... 若死人不復活，我們就吃吃喝喝吧！因為明天要死了。」—— 哥林多前書 15:29-32",
+                theology: "保羅為了傳福音，面對野獸般的逼迫，處境危險到「天天冒死」。是什麼支撐他這樣做？就是復活的確據。如果沒有復活，不如就盡情享樂、吃喝等死算了。\n\n復活的信仰徹底改變了信徒的生活方式。因為知道今生不是終點，我們就敢於為義受苦、敢於奉獻金錢與時間、敢於跨出舒適圈去愛不可愛的人。復活賜給我們為主冒險的勇氣。",
+                counseling: "我們常為了追求生活中的「安全感」，而選擇了妥協與退縮。但過度保護自己，往往會失去生命中更深層的意義與熱情。當我們確信生命在神手中時，我們就有了敢於付出的勇氣。",
+                action: "1. 因為相信復活，你願意在生活中做出什麼與世人「吃吃喝喝」不同的選擇？\n2. 近期神是否感動你去為祂做一件需要「勇敢跨出舒適圈」的事？",
+                prayer: "主啊，拯救我脫離只求今生安逸的短視近利。賜給我保羅般的勇氣，因為確信復活的榮耀，而敢於在今天為主拼搏與付出。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-24": {
+                dateStr: "4月24日 (五)",
+                title: "醒悟為善：脫離罪惡的聖潔呼召",
+                verse: "「你們不要自欺；濫交是敗壞善行。你們要醒悟為善，不要犯罪，因為有人不認識神。」—— 哥林多前書 15:33-34",
+                theology: "保羅筆鋒一轉，將復活的真理直接應用於道德生活。當時哥林多教會有人受異教思想影響，認為身體既然會朽壞，就不拘小節地放縱。保羅嚴厲地說：要醒悟！不要被錯誤的思想敗壞。\n\n相信復活，意味著我們極其看重身體的神聖性，因為這個身體將來要改變並進入永恆。復活的生命實踐，就是在此刻的生活中「醒悟為善，不要犯罪」，活出與神兒女身分相稱的聖潔見證。",
+                counseling: "我們所交往的群體與接收的資訊（濫交），會潛移默化地影響我們的價值觀。保持清醒的頭腦，有意識地選擇遠離那些會敗壞我們屬靈生命的環境，是對自己生命負責的表現。",
+                action: "1. 你的生活中，是否有什麼習慣或人際關係正在「敗壞」你的屬靈生命，需要警醒？\n2. 「醒悟為善」在今天的具體行動上，意味著你要拒絕什麼，或去行出什麼善？",
+                prayer: "聖潔的主，求祢光照我，讓我看出生命中任何不討祢喜悅的角落。賜我力量醒悟過來，遠離試探，活出復活生命應有的聖潔與光明。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-25": {
+                dateStr: "4月25日 (六)",
+                title: "子粒的比喻：接受生命的蛻變",
+                verse: "「無知的人哪，你所種的，若不死就不能生... 神隨自己的意思給它一個形體，並叫各等子粒各有自己的形體。」—— 哥林多前書 15:35-41",
+                theology: "面對人們對「復活後身體是什麼樣子」的好奇，保羅用大自然的種子來比喻。一粒麥子必須先被埋進土裡「死去」，才能長出美麗的植物。種下的子粒和長成的植物截然不同，卻又一脈相承。\n\n我們的生命也是如此。現在這個會生病、會衰老的身體只是那顆「種子」。死亡不是結束，而是蛻變的必經過程。神已經預備好，要賜給我們一個更豐盛、更榮耀的形體。",
+                counseling: "對死亡或老化的恐懼，是人類最深層的焦慮之一。大自然中種子的比喻，為我們提供了一個極其溫柔且充滿盼望的視角：失去現在的形體，是為了迎接未來更美好的綻放。",
+                action: "1. 「種子與植物」的比喻，如何幫助你減輕對老化或死亡的恐懼？\n2. 在生活中，我們也常需要「讓舊有的自我死去」，才能結出屬靈的果實。你目前正經歷哪種蛻變？",
+                prayer: "創造奇妙萬物的主，謝謝祢用大自然啟示我復活的奧祕。幫助我不畏懼生命的改變與衰老，因為知道祢正在為我預備更美的蛻變。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-26": {
+                dateStr: "4月26日 (日)",
+                title: "屬靈的身體：榮耀與不朽壞",
+                verse: "「死人復活也是這樣：所種的是必朽壞的，復活的是不朽壞的；所種的是羞辱的，復活的是榮耀的...」—— 哥林多前書 15:42-44",
+                theology: "保羅用了四個對比來描述將來的改變：從必朽壞到不朽壞，從羞辱到榮耀，從軟弱到強壯，從血氣到靈性。這是何等振奮人心的應許！我們今生所受的疾病之苦、肉體的限制，將來全都會被徹底翻轉。\n\n這個眼光能幫助我們超脫對現今身體軟弱的無奈。我們雖然妥善照顧現在的身體，但我們不將終極的盼望寄託於此，而是充滿期待地等候那件神親手為我們縫製的「榮耀新衣」。",
+                counseling: "當我們或身邊的人被慢性疾病、殘缺或衰老折磨時，常常會感到自卑與痛苦。這段經文提醒我們，我們現在的狀態並不是最終的定局。這種盼望能為受苦的心靈注入極大的安慰與力量。",
+                action: "1. 四個對比中（不朽壞、榮耀、強壯、靈性），哪一個應許現在最能安慰你的心？\n2. 擁有這個「榮耀形體」的盼望，如何改變你今天看待自己或他人身體缺陷的眼光？",
+                prayer: "主啊，當我的身體感到軟弱疲憊時，謝謝祢用這個偉大的應許安慰我。我期待那一天，能穿上祢賜的強壯與榮耀，永遠在祢面前事奉。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-27": {
+                dateStr: "4月27日 (一)",
+                title: "屬天形狀的保證：效法末後的亞當",
+                verse: "「頭一個個人是出於地，乃屬土；第二個人是出於天... 我們既有屬土的形狀，將來也必有屬天的形狀。」—— 哥林多前書 15:45-49",
+                theology: "我們因為是亞當的後裔，所以繼承了屬土的、會朽壞的生命。但感謝神，耶穌基督是「末後的亞當」，祂是賜生命的靈。當我們信靠祂，我們就開始了基因層面的「屬靈重組」。\n\n「將來必有屬天的形狀」不僅是未來的應許，也是今天的呼召。既然我們注定要像基督，我們今天在生活中，就當靠著聖靈，在心思意念和行為上，越來越效法祂屬天的性情。",
+                counseling: "認識到我們身上帶有「屬天」的基因，能幫助我們建立神聖的自我價值。當我們陷入屬土的血氣（憤怒、嫉妒、爭競）時，我們可以提醒自己：這不是我真正的身分，我是屬天的人。",
+                action: "1. 你覺得自己目前的言行舉止，比較多反映出「屬土的」血氣，還是「屬天的」性情？\n2. 今天在某個容易發脾氣的情境中，試著停下來，刻意活出基督「屬天」的溫柔與忍耐。",
+                prayer: "主耶穌，祢是從天降下的生命之主。求祢的聖靈天天更新我，讓我褪去屬土的舊習慣，逐漸綻放出屬天的新形狀，越來越像祢。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-28": {
+                dateStr: "4月28日 (二)",
+                title: "預備迎接改變：血肉之體不能承受神國",
+                verse: "「弟兄們，我告訴你們說，血肉之體不能承受神的國... 就在一霎時，眨眼之間，號筒末次吹響的時候。死人要復活成為不朽壞的，我們也要改變。」—— 哥林多前書 15:50-53",
+                theology: "這是一個奧祕。保羅宣告，當基督再來時，無論是已睡的還是活著的信徒，全都會在一瞬間經歷奇妙的改變，穿上不朽壞的形體，好承受神永恆的國度。\n\n這提醒我們，這個世界並非我們最終的家。我們是正在「預備改變」的人。帶著這樣的永恆意識生活，我們就不會把所有的精力與投資都耗費在那些注定會朽壞的事物上，而會積極積攢財寶在天上。",
+                counseling: "如果我們把所有的安全感都建立在會朽壞的物質、地位或關係上，我們的內心將永遠處於患得患失的焦慮中。將眼光投向永恆，是解開現世焦慮的最終鑰匙。",
+                action: "1. 「這個世界並非最終的家」這個觀念，如何影響你對金錢、名聲或物質的追求？\n2. 今天你可以做哪一件具有「永恆價值」、能帶入神國度的事情？",
+                prayer: "主啊，求祢幫助我不要緊抓著必朽壞的世界不放。賜我永恆的眼光，讓我今天的生活是為了迎接那榮耀的改變而預備。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-29": {
+                dateStr: "4月29日 (三)",
+                title: "誇勝的凱歌：死被得勝吞滅",
+                verse: "「死啊！你得勝的權勢在哪裡？死啊！你的毒鉤在哪裡？... 感謝神，使我們藉著我們的主耶穌基督得勝。」—— 哥林多前書 15:54-57",
+                theology: "死亡是人類最終極、最無解的敵人，它像一根毒鉤，帶來分離、恐懼與絕望。但復活的基督已經拔掉了這根毒鉤。死亡不再是終點，而是一扇通往永恆榮耀的門。\n\n保羅在這裡唱出了一首震撼宇宙的凱歌。既然我們連死亡都不怕了，這世上還有什麼能攔阻我們為主作見證？這份吞滅死亡的得勝，賦予了信徒無與倫比的勇氣，去面對生命中所有的挑戰。",
+                counseling: "恐懼死亡，往往是我們許多其他恐懼（怕生病、怕失敗、怕失去）的源頭。當最大的恐懼被基督的得勝粉碎時，我們就能經歷到那種不再被任何人事物挾制的絕對自由。",
+                action: "1. 當你不再害怕失去（甚至包括生命）時，你在服事和傳福音上會多出哪些勇氣？\n2. 今天試著向身邊一位感到絕望的朋友，分享這份勝過死亡、充滿盼望的福音。",
+                prayer: "得勝的君王，祢已將死亡吞滅！我讚美祢的救恩！求祢賜我這份無懼的底氣，讓我在生活中不再畏縮，勇敢為祢作榮耀的見證。奉主耶穌的名禱告，阿們。"
+            },
+            "2026-04-30": {
+                dateStr: "4月30日 (四)",
+                title: "復活生命實踐：務要堅固，竭力作工",
+                verse: "「所以我親愛的弟兄們，你們務要堅固，不可搖動，常常竭力多做主工；因為知道，你們的勞苦在主裡面不是徒然的。」—— 哥林多前書 15:58",
+                theology: "經過了長達 57 節的真理宣告，保羅給出了這段復活篇章的最終應用：「所以…」。因為基督確實復活了，因為我們將來必會改變得榮耀，所以我們今天在主裡面的每一次探訪、每一句安慰、每一筆奉獻，都具有永恆的價值。\n\n這段橫跨預苦期到復活期的旅程在此畫下句點。從十字架上的捨己到空墳墓的得勝，神已經裝備了我們。當你在服事中感到疲憊時，請記住這個應許：務要堅固，你的勞苦在主裡面絕不徒然！",
+                counseling: "在漫長的服事與生活中，我們難免會感到倦怠，懷疑自己的付出是否有意義。神用這句充滿力量的應許作為總結，提醒我們：在愛中所做的一切，沒有一件事是會被浪費的。",
+                action: "1. 回顧這 62 天的靈修，神在哪一方面「重整」了你，又賜給了你什麼「實踐」的動力？\n2. 將「勞苦在主裡面不是徒然的」這句話寫下來放在明顯處，激勵自己今天繼續竭力多做主工。",
+                prayer: "天父，謝謝祢在這段日子中用話語堅固我。我願將自己重新獻上，無論得時不得時，都堅定不移地為主作工，因為確信祢的應許永不落空。奉主耶穌的名禱告，阿們！"
             }
         };
 
@@ -509,7 +727,7 @@
                 ]
             },
             {
-                week: "第二週：擁抱真實的自我 - 自我價值 (3/8 - 3/14)",
+                week: "第二週：擁抱真實的自我 (3/8 - 3/14)",
                 days: [
                     { day: 8, date: "3/8 (日)", title: "你比你想像的更尊貴", hasContent: true, key: "2026-03-08" },
                     { day: 9, date: "3/9 (一)", title: "不再用成就定義自己", hasContent: true, key: "2026-03-09" },
@@ -521,7 +739,7 @@
                 ]
             },
             {
-                week: "第三週：在關係中操練愛 - 人際與家庭 (3/15 - 3/21)",
+                week: "第三週：在關係中操練愛 (3/15 - 3/21)",
                 days: [
                     { day: 15, date: "3/15 (日)", title: "愛，從設立健康的界線開始", hasContent: true, key: "2026-03-15" },
                     { day: 16, date: "3/16 (一)", title: "饒恕：釋放那個被囚禁的自己", hasContent: true, key: "2026-03-16" },
@@ -557,9 +775,49 @@
                 ]
             },
             {
-                week: "第六週：復活與得勝 (4/5)",
+                week: "第六週：復活與看見 (4/5 - 4/11)",
                 days: [
-                    { day: 36, date: "4/5 (日)", title: "復活節：那塊石頭已經輥開", hasContent: true, key: "2026-04-05" }
+                    { day: 36, date: "4/5 (日)", title: "復活節：那塊石頭已經輥開", hasContent: true, key: "2026-04-05" },
+                    { day: 37, date: "4/6 (一)", title: "空墳墓的察覺：從絕望到相信", hasContent: true, key: "2026-04-06" },
+                    { day: 38, date: "4/7 (二)", title: "停在原地的悲傷：面對失去", hasContent: true, key: "2026-04-07" },
+                    { day: 39, date: "4/8 (三)", title: "呼喚你的名：專屬的相遇", hasContent: true, key: "2026-04-08" },
+                    { day: 40, date: "4/9 (四)", title: "願你們平安：突破恐懼的同在", hasContent: true, key: "2026-04-09" },
+                    { day: 41, date: "4/10 (五)", title: "領受聖靈：賦予和好的使命", hasContent: true, key: "2026-04-10" },
+                    { day: 42, date: "4/11 (六)", title: "摸主的釘痕：接納真實的疑惑", hasContent: true, key: "2026-04-11" }
+                ]
+            },
+            {
+                week: "第七週：恢復與呼召 (4/12 - 4/18)",
+                days: [
+                    { day: 43, date: "4/12 (日)", title: "為了叫你們信：寫在生活中的神蹟", hasContent: true, key: "2026-04-12" },
+                    { day: 44, date: "4/13 (一)", title: "再次撒網：在徒勞中經歷供應", hasContent: true, key: "2026-04-13" },
+                    { day: 45, date: "4/14 (二)", title: "岸上的早餐：溫暖的相交與安息", hasContent: true, key: "2026-04-14" },
+                    { day: 46, date: "4/15 (三)", title: "你愛我嗎：處理深層的內疚", hasContent: true, key: "2026-04-15" },
+                    { day: 47, date: "4/16 (四)", title: "第三次的呼召：完全的恢復與委身", hasContent: true, key: "2026-04-16" },
+                    { day: 48, date: "4/17 (五)", title: "與你何干：放下比較，專心跟隨", hasContent: true, key: "2026-04-17" },
+                    { day: 49, date: "4/18 (六)", title: "信仰的絕對基石：福音的確據", hasContent: true, key: "2026-04-18" }
+                ]
+            },
+            {
+                week: "第八週：復活大能的盼望 (4/19 - 4/25)",
+                days: [
+                    { day: 50, date: "4/19 (日)", title: "恩典的大能：從逼迫者到見證人", hasContent: true, key: "2026-04-19" },
+                    { day: 51, date: "4/20 (一)", title: "直視信仰的底線：若沒有復活", hasContent: true, key: "2026-04-20" },
+                    { day: 52, date: "4/21 (二)", title: "初熟的果子：基督作王的盼望", hasContent: true, key: "2026-04-21" },
+                    { day: 53, date: "4/22 (三)", title: "終極的得勝：萬物服在足下", hasContent: true, key: "2026-04-22" },
+                    { day: 54, date: "4/23 (四)", title: "天天冒死：因復活而有的勇敢", hasContent: true, key: "2026-04-23" },
+                    { day: 55, date: "4/24 (五)", title: "醒悟為善：脫離罪惡的聖潔呼召", hasContent: true, key: "2026-04-24" },
+                    { day: 56, date: "4/25 (六)", title: "子粒的比喻：接受生命的蛻變", hasContent: true, key: "2026-04-25" }
+                ]
+            },
+            {
+                week: "第九週：屬天形狀與終極得勝 (4/26 - 4/30)",
+                days: [
+                    { day: 57, date: "4/26 (日)", title: "屬靈的身體：榮耀與不朽壞", hasContent: true, key: "2026-04-26" },
+                    { day: 58, date: "4/27 (一)", title: "屬天形狀的保證：效法末後的亞當", hasContent: true, key: "2026-04-27" },
+                    { day: 59, date: "4/28 (二)", title: "預備迎接改變：血肉之體不能承受神國", hasContent: true, key: "2026-04-28" },
+                    { day: 60, date: "4/29 (三)", title: "誇勝的凱歌：死被得勝吞滅", hasContent: true, key: "2026-04-29" },
+                    { day: 61, date: "4/30 (四)", title: "復活生命實踐：務要堅固，竭力作工", hasContent: true, key: "2026-04-30" }
                 ]
             }
         ];
@@ -578,123 +836,6 @@
         let currentDevotionalKey = null;
         let isAudioPlaying = false;
         let currentUtterance = null;
-
-        // 語音播放功能
-        function toggleAudio() {
-            const synth = window.speechSynthesis;
-
-            if (isAudioPlaying || synth.speaking) {
-                stopAudio();
-                return;
-            }
-
-            const data = devotionals[currentDevotionalKey];
-            if (!data) return;
-
-            // 移除金句中的聖經章節來源
-            const verseToSpeak = data.verse.split('——')[0].trim();
-
-            // 準備要朗讀的段落。使用多個全形句號創造約 1.5 秒的自然停頓，
-            // 這種做法能避開手機瀏覽器(如 iOS Safari)阻擋多段播放導致「冇聲」的問題。
-            const pauseStr = "。。。。。。";
-            const textToSpeak = [
-                data.title,
-                verseToSpeak,
-                data.theology,
-                data.counseling,
-                data.action,
-                data.prayer
-            ].join(pauseStr);
-
-            // 確保語音引擎沒有卡在背景
-            synth.resume();
-            synth.cancel();
-
-            currentUtterance = new SpeechSynthesisUtterance(textToSpeak);
-            currentUtterance.lang = 'zh-HK';
-            currentUtterance.rate = 0.82;  // 保持慢速
-            currentUtterance.pitch = 1.0;  // 恢復正常音調，避免女聲被壓低變成男聲
-
-            // 尋找廣東話女聲
-            const voices = synth.getVoices();
-            let targetVoices = voices.filter(v => v.lang.includes('zh-HK') || v.lang.toLowerCase().includes('yue'));
-            
-            // 明確指定常見的「女聲」名稱 (Sin-ji: 蘋果廣東話女聲, HiuMaan: 微軟廣東話女聲)
-            const femaleNames = ['sin-ji', 'hiumaan', 'google', 'ting-ting', 'yating', 'hanhan', 'xiaoxiao', 'female'];
-            
-            let preferredVoice = targetVoices.find(v => {
-                const name = v.name.toLowerCase();
-                return femaleNames.some(f => name.includes(f));
-            });
-
-            // 如果找不到特定女聲，選第一個廣東話聲音
-            if (!preferredVoice && targetVoices.length > 0) {
-                preferredVoice = targetVoices[0];
-            }
-
-            // 容錯機制：如果連廣東話都沒有，找其他的中文女聲，避免完全冇聲
-            if (!preferredVoice) {
-                let zhVoices = voices.filter(v => v.lang.includes('zh'));
-                preferredVoice = zhVoices.find(v => {
-                    const name = v.name.toLowerCase();
-                    return femaleNames.some(f => name.includes(f));
-                }) || zhVoices[0];
-            }
-
-            // 設定最終選定的聲音
-            if (preferredVoice) {
-                currentUtterance.voice = preferredVoice;
-                currentUtterance.lang = preferredVoice.lang;
-            }
-
-            currentUtterance.onend = () => { stopAudio(); };
-            currentUtterance.onerror = (e) => { 
-                console.log("語音播放發生錯誤:", e);
-                stopAudio(); 
-            };
-
-            // 播放背景音樂 (As the Deer 風格的純音樂)
-            const bgm = document.getElementById('bgm');
-            if (bgm) {
-                bgm.volume = 0.10;
-                bgm.play().catch(e => console.log("音訊自動播放被阻擋：", e));
-            }
-            
-            synth.speak(currentUtterance);
-            setAudioUIPlaying();
-        }
-
-        // 停止所有語音與音樂
-        function stopAudio() {
-            isAudioPlaying = false;
-            if (window.speechSynthesis && window.speechSynthesis.speaking) {
-                window.speechSynthesis.cancel();
-            }
-            const bgm = document.getElementById('bgm');
-            if (bgm) {
-                bgm.pause();
-                bgm.currentTime = 0;
-            }
-            resetAudioUI();
-        }
-
-        function resetAudioUI() {
-            isAudioPlaying = false;
-            const playIcon = document.getElementById('play-icon');
-            const pauseIcon = document.getElementById('pause-icon');
-            const audioText = document.getElementById('audio-text');
-            
-            if(playIcon) playIcon.classList.remove('hidden');
-            if(pauseIcon) pauseIcon.classList.add('hidden');
-            if(audioText) audioText.textContent = "聆聽靈修 (沉思版)";
-        }
-
-        function setAudioUIPlaying() {
-            isAudioPlaying = true;
-            document.getElementById('play-icon').classList.add('hidden');
-            document.getElementById('pause-icon').classList.remove('hidden');
-            document.getElementById('audio-text').textContent = "停止聆聽";
-        }
 
         // 取得香港時間的 YYYY-MM-DD
         function getHKDateString() {
@@ -723,14 +864,10 @@
 
             // 判斷是否在活動期間內
             const startDate = "2026-02-28";
-            const endDate = "2026-04-05";
+            const endDate = "2026-04-30";
 
-            // 如果沒有指定日期，且香港時間今天不在期間內，預設顯示預備篇並顯示提示
             if (!specificDate && (targetDate < startDate || targetDate > endDate)) {
                 targetDate = "2026-02-28";
-                document.getElementById('preview-notice').classList.remove('hidden');
-            } else {
-                document.getElementById('preview-notice').classList.add('hidden');
             }
 
             const data = devotionals[targetDate];
@@ -809,6 +946,121 @@
                 contentOutline.classList.remove('hidden-content');
                 contentToday.classList.add('hidden-content');
             }
+        }
+
+        // 語音播放功能
+        function toggleAudio() {
+            const synth = window.speechSynthesis;
+
+            if (isAudioPlaying || synth.speaking) {
+                stopAudio();
+                return;
+            }
+
+            const data = devotionals[currentDevotionalKey];
+            if (!data) return;
+
+            // 移除金句中的聖經章節來源
+            const verseToSpeak = data.verse.split('——')[0].trim();
+
+            // 準備要朗讀的段落。使用多個全形句號創造約 1.5 秒的自然停頓，避開手機系統阻擋分段播放
+            const pauseStr = "。。。。。。";
+            const textToSpeak = [
+                data.title,
+                verseToSpeak,
+                data.theology,
+                data.counseling,
+                data.action,
+                data.prayer
+            ].join(pauseStr);
+
+            // 確保語音引擎沒有卡在背景
+            synth.resume();
+            synth.cancel();
+
+            currentUtterance = new SpeechSynthesisUtterance(textToSpeak);
+            currentUtterance.lang = 'zh-HK';
+            currentUtterance.rate = 0.82;  // 保持慢速
+            currentUtterance.pitch = 1.0;  // 恢復正常音調避免女聲變男聲
+
+            // 尋找廣東話女聲
+            const voices = synth.getVoices();
+            let targetVoices = voices.filter(v => v.lang.includes('zh-HK') || v.lang.toLowerCase().includes('yue'));
+            
+            const femaleNames = ['sin-ji', 'hiumaan', 'google', 'ting-ting', 'yating', 'hanhan', 'xiaoxiao', 'female'];
+            
+            let preferredVoice = targetVoices.find(v => {
+                const name = v.name.toLowerCase();
+                return femaleNames.some(f => name.includes(f));
+            });
+
+            // 如果找不到特定女聲，選第一個廣東話聲音
+            if (!preferredVoice && targetVoices.length > 0) {
+                preferredVoice = targetVoices[0];
+            }
+
+            // 容錯機制：如果連廣東話都沒有，找其他的中文女聲，避免完全冇聲
+            if (!preferredVoice) {
+                let zhVoices = voices.filter(v => v.lang.includes('zh'));
+                preferredVoice = zhVoices.find(v => {
+                    const name = v.name.toLowerCase();
+                    return femaleNames.some(f => name.includes(f));
+                }) || zhVoices[0];
+            }
+
+            // 設定最終選定的聲音
+            if (preferredVoice) {
+                currentUtterance.voice = preferredVoice;
+                currentUtterance.lang = preferredVoice.lang;
+            }
+
+            currentUtterance.onend = () => { stopAudio(); };
+            currentUtterance.onerror = (e) => { 
+                console.log("語音播放發生錯誤:", e);
+                stopAudio(); 
+            };
+
+            // 播放背景音樂 (As the Deer 風格的純音樂)
+            const bgm = document.getElementById('bgm');
+            if (bgm) {
+                bgm.volume = 0.10;
+                bgm.play().catch(e => console.log("音訊自動播放被阻擋：", e));
+            }
+            
+            synth.speak(currentUtterance);
+            setAudioUIPlaying();
+        }
+
+        // 停止所有語音與音樂
+        function stopAudio() {
+            isAudioPlaying = false;
+            if (window.speechSynthesis && window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+            }
+            const bgm = document.getElementById('bgm');
+            if (bgm) {
+                bgm.pause();
+                bgm.currentTime = 0;
+            }
+            resetAudioUI();
+        }
+
+        function resetAudioUI() {
+            isAudioPlaying = false;
+            const playIcon = document.getElementById('play-icon');
+            const pauseIcon = document.getElementById('pause-icon');
+            const audioText = document.getElementById('audio-text');
+            
+            if(playIcon) playIcon.classList.remove('hidden');
+            if(pauseIcon) pauseIcon.classList.add('hidden');
+            if(audioText) audioText.textContent = "聆聽靈修 (沉思版)";
+        }
+
+        function setAudioUIPlaying() {
+            isAudioPlaying = true;
+            document.getElementById('play-icon').classList.add('hidden');
+            document.getElementById('pause-icon').classList.remove('hidden');
+            document.getElementById('audio-text').textContent = "停止聆聽";
         }
     </script>
 </body>
